@@ -36,7 +36,6 @@ change_sources() {
     if ! ping -c 2 mirrors.tuna.tsinghua.edu.cn &> /dev/null; then
         echo -e "${RED}网络连接异常，无法更新软件源${NC}"
         return 1
-    }
 
     echo "请选择要更换的软件源:"
     echo "1) 官方源"
