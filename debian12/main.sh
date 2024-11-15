@@ -36,6 +36,7 @@ change_sources() {
     if ! ping -c 2 mirrors.tuna.tsinghua.edu.cn &> /dev/null; then
         echo -e "${RED}网络连接异常，无法更新软件源${NC}"
         return 1
+    fi
 
     echo "请选择要更换的软件源:"
     echo "1) 官方源"
@@ -50,53 +51,53 @@ change_sources() {
     # 软件源映射
     declare -A sources=(
         [1]="deb https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb-src https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware"
-        [2]="deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
-deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware"
-        [3]="deb https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
-deb-src https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
-deb https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
-        [4]="deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
-deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
-        [5]="deb https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
-deb-src https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
-deb https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
-        [6]="deb http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
-deb-src http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
-deb http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb-src http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+  deb-src https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+  deb https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+          [2]="deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+  deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+  deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+          [3]="deb https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb-src https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+          [4]="deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+          [5]="deb https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb-src https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
+          [6]="deb http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb-src http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
+  deb http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb-src http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+  deb http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb-src http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+  deb http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+  deb-src http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware"
     )
 
     # 输入验证
