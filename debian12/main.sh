@@ -117,7 +117,7 @@ change_sources() {
 
     # 更新源缓存
     if apt-get update; then
-        echo -e "${GREEN}软件源更新成功${NC}"
+        echo -e "${GREEN}软件源更新成功,请执行 apt update 更新${NC}"
         log_action "软件源更新成功"
     else
         echo -e "${RED}软件源更新失败${NC}"
