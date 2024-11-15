@@ -18,7 +18,32 @@ check_root() {
        exit 1
     fi
 }
+# 检查并安装 curl
+install_curl() {
+    if ! command -v curl &> /dev/null; then
+        echo -e "${YELLOW}未安装 curl，正在安装...${NC}"
+        if apt-get update && apt-get install -y curl; then  # 使用 apt-get
+            echo -e "${GREEN}curl 安装成功${NC}"
+        else
+            echo -e "${RED}curl 安装失败${NC}"
+            exit 1
+        fi
+    fi
+}
 
+# 下载并安装 1Panel
+install_1panel() {
+    echo -e "${YELLOW}正在下载 1Panel 安装脚本...${NC}"
+    if curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh; then
+        echo -e "${GREEN}1Panel 安装脚本下载完成${NC}"
+        echo -e "${YELLOW}正在执行 1Panel 安装脚本...(完成后将删除脚本)${NC}"
+        bash quick_start.sh
+        rm quick_start.sh  # 安装完成后删除脚本
+    else
+        echo -e "${RED}1Panel 安装脚本下载失败${NC}"
+        exit 1
+    fi
+}
 # 菜单函数
 show_menu() {
     echo "请选择要执行的操作:"
@@ -27,8 +52,10 @@ show_menu() {
     echo "3) 查看当前软件源"
     echo "4) 查看当前 DNS"
     echo "5) 网络连接测试"
-    echo "6) 退出"
+    echo "6) 安装 1Panel"  # 添加 1Panel 安装选项
+    echo "7) 退出"
 }
+
 
 # 更换软件源
 change_sources() {
@@ -200,7 +227,7 @@ main() {
     # 主循环
     while true; do
         show_menu
-        read -p "请输入你的选择 [1-6]: " choice
+        read -p "请输入你的选择 [1-7]: " choice
         
         case $choice in
             1)
@@ -218,7 +245,11 @@ main() {
             5)
                 test_network
                 ;;
-            6)
+            6)  # 1Panel 安装
+                install_curl
+                install_1panel
+                ;;
+            7)
                 echo "正在退出..."
                 exit 0
                 ;;
