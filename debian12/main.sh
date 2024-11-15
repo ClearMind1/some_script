@@ -36,9 +36,8 @@ install_1panel() {
     echo -e "${YELLOW}正在下载 1Panel 安装脚本...${NC}"
     if curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh; then
         echo -e "${GREEN}1Panel 安装脚本下载完成${NC}"
-        echo -e "${YELLOW}正在执行 1Panel 安装脚本...(完成后将删除脚本)${NC}"
+        echo -e "${YELLOW}正在执行 1Panel 安装脚本...${NC}"
         bash quick_start.sh
-        rm quick_start.sh  # 安装完成后删除脚本
     else
         echo -e "${RED}1Panel 安装脚本下载失败${NC}"
         exit 1
