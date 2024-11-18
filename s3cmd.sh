@@ -25,7 +25,7 @@ install_s3cmd() {
 
 # 配置 s3cmd（支持多云存储）
 configure_s3cmd() {
-    clear
+    #clear
     echo "选择云存储提供商："
     echo "1. 千牛云"
     echo "2. 阿里云OSS"
@@ -61,7 +61,12 @@ configure_s3cmd() {
             return 1
             ;;
     esac
-
+    echo "=============="
+    echo "配置为"
+    echo $access_key
+    echo $secret_key
+    echo $endpoint
+    echo "=============="
     # 创建配置文件
     mkdir -p ~/.s3cfg
     cat > ~/.s3cfg << EOF
