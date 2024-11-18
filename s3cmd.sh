@@ -129,17 +129,6 @@ system_check() {
            echo "$dep: 未安装 ✗"
        fi
    done
-
-   # 系统安全和性能建议
-   echo -e "\n系统建议:"
-   # 检查系统更新
-   if [[ "$OS" == "centos" || "$OS" == "rhel" ]]; then
-       echo "检查系统更新: yum check-update"
-       yum check-update || true
-   elif [[ "$OS" == "debian" || "$OS" == "ubuntu" ]]; then
-       echo "检查系统更新: apt list --upgradable"
-       apt list --upgradable || true
-   fi
 }
 
 # 网络连接测试
