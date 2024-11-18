@@ -11,3 +11,7 @@ wget -O debian12_quick.sh https://github.com/ClearMind1/some_script/blob/main/de
 ```shell
 wget -O s3cmd.sh https://github.com/ClearMind1/some_script/blob/main/s3cmd.sh && bash s3cmd.sh
 ```
+or
+```shell
+curl -L -o s3cmd.sh https://github.com/ClearMind1/some_script/raw/main/s3cmd.sh && bash s3cmd.sh
+```
