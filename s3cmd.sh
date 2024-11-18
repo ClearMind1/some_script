@@ -5,7 +5,7 @@ check_s3cmd_installed() {
     if ! command -v s3cmd &> /dev/null
     then
         echo "s3cmd 未安装，正在安装..."
-        sudo apt-get update
+        sudo apt update
         sudo apt-get install -y s3cmd
     else
         echo "s3cmd 已安装"
