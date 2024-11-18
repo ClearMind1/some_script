@@ -41,7 +41,7 @@ configure_s3cmd() {
     # 根据不同云存储配置
     case $cloud_provider in
         1)  # 千牛云配置
-            region="cn-east-1"
+            read -p "请输入区域 (例如 cn-east-1): " region
             endpoint="s3-${region}.qiniu.com"
             ;;
         2)  # 阿里云OSS配置
@@ -141,6 +141,7 @@ test_network() {
         "oss-cn-hangzhou.aliyuncs.com"
         "cos.ap-beijing.myqcloud.com"
         "s3-cn-east-1.qiniu.com"
+        "s3.ap-southeast-1.com"
     )
 
     for domain in "${domains[@]}"; do
