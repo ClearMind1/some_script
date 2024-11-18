@@ -141,7 +141,7 @@ test_network() {
         "oss-cn-hangzhou.aliyuncs.com"
         "cos.ap-beijing.myqcloud.com"
         "s3-cn-east-1.qiniu.com"
-        "s3.ap-southeast-1.com"
+        "s3.ap-southeast-1.qiniu.com"
     )
 
     for domain in "${domains[@]}"; do
