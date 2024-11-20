@@ -24,5 +24,5 @@ curl -L -o s3cmd.sh https://raw.githubusercontent.com/ClearMind1/some_script/mai
 来源：bash <(wget -qO- -o- https://git.io/v2ray.sh)
 将github链接添加上搭理，方便国内使用
 ```shell
-curl -L -o v2ray_i.sh https://raw.githubusercontent.com/ClearMind1/some_script/main/v2ray_i.sh && bash v2ray_i.sh
+curl -L -o v2ray_i.sh https://gh-proxy.com/raw.githubusercontent.com/ClearMind1/some_script/main/v2ray_i.sh && bash v2ray_i.sh
 ```
