@@ -226,7 +226,7 @@ get_version() {
   TMP_FILE="$(mktemp)"
   if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$TMP_FILE" 'https://api.github.com/repos/v2rayA/dist/tags'; then
     "rm" "$TMP_FILE"
-    echo 'error: Failed to get release list, please check your network.'
+    echo 'error: Failed to get v2ray release list, please check your network.'
     exit 1
   fi
   RELEASE_LATEST="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'name' | awk -F '"' '{print $4}' | awk 'NR==1{print}')"
