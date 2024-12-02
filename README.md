@@ -8,7 +8,7 @@ wget -O debian12_quick.sh https://raw.githubusercontent.com/ClearMind1/some_scri
 ```
 or
 ```shell
-curl -L -o s3cmd.sh https://raw.githubusercontent.com/ClearMind1/some_script/main/debian12/main.sh && bash debian12_quick.sh
+curl -L -o debian12_quick.sh https://raw.githubusercontent.com/ClearMind1/some_script/main/debian12/main.sh && bash debian12_quick.sh
 ```
 
 # 二、s3cmd快速脚本(有问题)
